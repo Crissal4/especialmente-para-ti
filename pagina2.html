@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuegos Artificiales, Rosas y Matrix Love</title>
+    <link rel="stylesheet" href="styles/style2.css"> 
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+</head>
+<body>
+    <!-- Botón para reproducir música -->
+    <button id="playBtn">🎶 Escuchar Música</button>
+
+    <!-- Música de fondo -->
+    <audio id="bgMusicP2" loop>
+        <source src="voice/Ed.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Controles de Matrix -->
+    <div class="controls">
+        <label>Velocidad: <input type="range" min="1" max="30" value="10" id="speedControl"></label>
+        <label>Color: <input type="color" id="colorPicker" value="#ff69b4"></label>
+        <label>Texto: <input type="text" id="textInput" value="very happy"></label>
+    </div>
+
+    <!-- Canvas para Matrix -->
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Contenedor de fuegos artificiales -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    
+
+    <!-- Mensaje de amor -->
+    <div class="love-message">
+        <a href="flowers.html" >
+            <h1>¡Felicidades!</h1>
+        <p>💖Esta es mi Sorpresa para ti💖</p>
+        </a>
+    </div>
+
+    <script src="script/script2.js"></script>
+    <script>
+        // Botón para reproducir música
+        const playBtn = document.getElementById("playBtn");
+        const bgMusicP2 = document.getElementById("bgMusicP2");
+
+        playBtn.addEventListener("click", () => {
+            if (bgMusicP2.paused) {
+                bgMusicP2.play();
+                playBtn.textContent = "🔊 Música Sonando";
+            } else {
+                bgMusicP2.pause();
+                playBtn.textContent = "🎶 Escuchar Música";
+            }
+        });
+    </script>
+</body>
+</html>

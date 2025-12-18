@@ -1,0 +1,447 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: url('img1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Estilos del candado */
+.lock {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.lock:hover {
+    transform: scale(1.05);
+}
+
+.lock-body {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(145deg, #4a5568, #2d3748);
+    border-radius: 15px;
+    position: relative;
+    margin: 20px auto;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+.lock-shackle {
+    width: 60px;
+    height: 60px;
+    border: 8px solid #4a5568;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    left: 10px;
+    border-bottom: 8px solid transparent;
+    transition: all 0.5s ease;
+}
+
+.lock-keyhole {
+    width: 20px;
+    height: 30px;
+    background: #1a202c;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lock-keyhole::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #1a202c;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Animación de apertura */
+.lock.unlocked .lock-shackle {
+    transform: rotate(-45deg);
+    border-color: #48bb78;
+}
+
+.lock.unlocked .lock-body {
+    background: linear-gradient(145deg, #48bb78, #38a169);
+}
+
+/* Sección de contraseña */
+.password-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#passwordInput {
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(5px);
+    outline: none;
+    transition: all 0.3s ease;
+    width: 250px;
+}
+
+#passwordInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#passwordInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Teclado numérico */
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+    max-width: 200px;
+}
+
+.number-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #667eea, #5a67d8);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-btn:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(145deg, #5a67d8, #4c51bf);
+}
+
+.number-btn:active {
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.number-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#checkBtn {
+    background: linear-gradient(145deg, #48bb78, #38a169);
+    color: white;
+}
+
+#checkBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+}
+
+#clearBtn {
+    background: linear-gradient(145deg, #f56565, #e53e3e);
+    color: white;
+}
+
+#clearBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 101, 101, 0.4);
+}
+
+/* Mensajes */
+.message {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    max-width: 300px;
+}
+
+.message.error {
+    background: rgba(245, 101, 101, 0.2);
+    border-color: rgba(245, 101, 101, 0.5);
+    animation: shake 0.5s ease-in-out;
+}
+
+.message.success {
+    background: rgba(72, 187, 120, 0.2);
+    border-color: rgba(72, 187, 120, 0.5);
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Efectos de estrellas de fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: sparkle 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200px); }
+}
+
+/* Estrellas animadas */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 25px 5px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 50px 25px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 75px 15px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 100px 35px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 125px 10px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 150px 30px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 175px 20px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 200px 40px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 225px 8px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 250px 28px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 275px 18px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 300px 38px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 325px 12px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 350px 32px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 375px 22px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 400px 42px, rgba(255, 255, 255, 0.8), transparent);
+    background-repeat: repeat;
+    background-size: 425px 50px;
+    animation: twinkle 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0% { 
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    25% { 
+        transform: translateX(-50px) translateY(-20px);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateX(-100px) translateY(-40px);
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translateX(-150px) translateY(-20px);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: translateX(-200px) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estrellas grandes que se mueven en círculos */
+.star-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: orbit 20s linear infinite;
+}
+
+.star:nth-child(1) {
+    width: 2px;
+    height: 2px;
+    top: 20%;
+    left: 10%;
+    animation-duration: 25s;
+    animation-delay: 0s;
+}
+
+.star:nth-child(2) {
+    width: 1px;
+    height: 1px;
+    top: 60%;
+    left: 80%;
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.star:nth-child(3) {
+    width: 3px;
+    height: 3px;
+    top: 80%;
+    left: 20%;
+    animation-duration: 35s;
+    animation-delay: -10s;
+}
+
+.star:nth-child(4) {
+    width: 1px;
+    height: 1px;
+    top: 30%;
+    left: 70%;
+    animation-duration: 28s;
+    animation-delay: -15s;
+}
+
+.star:nth-child(5) {
+    width: 2px;
+    height: 2px;
+    top: 70%;
+    left: 50%;
+    animation-duration: 32s;
+    animation-delay: -20s;
+}
+
+.star:nth-child(6) {
+    width: 1px;
+    height: 1px;
+    top: 10%;
+    left: 60%;
+    animation-duration: 26s;
+    animation-delay: -8s;
+}
+
+.star:nth-child(7) {
+    width: 2px;
+    height: 2px;
+    top: 50%;
+    left: 30%;
+    animation-duration: 29s;
+    animation-delay: -12s;
+}
+
+.star:nth-child(8) {
+    width: 1px;
+    height: 1px;
+    top: 90%;
+    left: 80%;
+    animation-duration: 33s;
+    animation-delay: -18s;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg) translateX(100px) rotate(-180deg);
+        opacity: 0.7;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+        opacity: 0.3;
+    }
+}

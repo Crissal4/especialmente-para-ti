@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+</head>
+<body>
+    <!-- Campo de estrellas animadas -->
+    <div class="star-field">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <div class="container">
+        <div class="lock-container">
+            <div class="lock" id="lock">
+                <div class="lock-body">
+                    <div class="lock-shackle"></div>
+                    <div class="lock-keyhole"></div>
+                </div>
+            </div>
+            
+            <div class="password-section">
+                <input type="password" id="passwordInput" placeholder="Ingresa la contraseña..." maxlength="20">
+                <button id="loginBtn">Ingresar</button>
+            </div>
+            
+            <div class="message" id="message">
+                !Adivina!
+            </div>
+        </div>
+    </div>
+    
+    <script src="script/script.js"></script>
+</body>
+</html>
